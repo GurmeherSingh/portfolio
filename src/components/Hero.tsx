@@ -77,36 +77,17 @@ const Hero: React.FC<HeroProps> = ({ soundEnabled }) => {
         )}
       </div>
 
-      {/* Floating Scouter UI */}
-      <motion.div
-        className="fixed pointer-events-none z-20"
-        style={{
-          left: mousePosition.x - 30,
-          top: mousePosition.y - 30,
-        }}
-        animate={{
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-        }}
-      >
-        <div className="relative">
-          <Target className="w-12 h-12 text-green-400 opacity-70" />
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full animate-pulse" />
-        </div>
-      </motion.div>
+      {/* Floating Scouter UI removed */}
 
       {/* Main Content */}
-      <div className="relative z-10 text-center max-w-4xl px-6">
+      <div className="relative z-10 text-center max-w-5xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
           <motion.h1
-            className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500 bg-clip-text text-transparent"
+            className="pl-2 md:pl-4 text-6xl md:text-8xl font-bold mb-6 pb-4 leading-normal bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500 bg-clip-text text-transparent"
             whileHover={{
               scale: 1.05,
               textShadow: '0 0 30px rgba(251, 146, 60, 1)',
@@ -123,7 +104,7 @@ const Hero: React.FC<HeroProps> = ({ soundEnabled }) => {
               repeat: Infinity,
             }}
           >
-            Your Name
+           Gurmeher Singh
           </motion.h1>
           
           <motion.p

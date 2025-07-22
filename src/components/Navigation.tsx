@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import goku1 from '../assets/goku1.png';
+import goku2 from '../assets/goku2.png';
+import goku3 from '../assets/goku3.png';
+import { Star } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +26,7 @@ const Navigation = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Resume', href: '#resume' },
     { name: 'Hobbies', href: '#hobbies' },
-    { name: 'Business', href: '#business' },
+    // { name: 'Business', href: '#business' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -40,10 +44,13 @@ const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
-            <Zap className="h-8 w-8 text-orange-400" />
-            <span className="text-xl font-bold bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
-              DBZ Portfolio
-            </span>
+            {/* Three cute Gohan avatars for DBZ inspiration */}
+            <div className="flex items-center space-x-[-10px]">
+              <img src={goku1} alt="Gohan avatar 1" className="h-8 w-8 rounded-full border-2 border-orange-400 shadow-md bg-white" />
+              <img src={goku2} alt="Gohan avatar 2" className="h-8 w-8 rounded-full border-2 border-orange-400 shadow-md bg-white" />
+              <img src={goku3} alt="Gohan avatar 3" className="h-8 w-8 rounded-full border-2 border-orange-400 shadow-md bg-white" />
+            </div>
+            <span className="ml-3 text-xs text-orange-300 opacity-80">DBZ inspired</span>
           </motion.div>
 
           {/* Desktop Navigation */}

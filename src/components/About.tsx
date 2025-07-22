@@ -45,14 +45,7 @@ const About: React.FC<AboutProps> = ({ soundEnabled }) => {
                 Goku's endless pursuit of martial arts mastery, I'm constantly pushing my 
                 limits in the world of technology and software development.
               </p>
-              
-              <p className="text-lg text-gray-300 leading-relaxed mb-8">
-                My journey has taken me through various internships and projects, each one 
-                making me stronger and more skilled. I believe in the power of continuous 
-                learning and the importance of protecting what matters most - whether that's 
-                building secure applications or creating meaningful connections through code.
-              </p>
-
+            
               {/* Hidden Dragon Ball Easter Egg */}
               <motion.div
                 className="absolute -top-4 -right-4 cursor-pointer"
