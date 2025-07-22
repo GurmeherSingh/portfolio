@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Target } from 'lucide-react';
+import KamehamehaEffect from './KamehamehaEffect';
 
 interface HeroProps {
   soundEnabled: boolean;
@@ -10,6 +11,7 @@ const Hero: React.FC<HeroProps> = ({ soundEnabled }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showInstantTransmission, setShowInstantTransmission] = useState(false);
   const [konamiCode, setKonamiCode] = useState<string[]>([]);
+  const [showKamehameha, setShowKamehameha] = useState(false);
   const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
 
   useEffect(() => {
@@ -36,9 +38,12 @@ const Hero: React.FC<HeroProps> = ({ soundEnabled }) => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [konamiCode]);
+  
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Kamehameha Effect Trigger */}
+      {showKamehameha && <KamehamehaEffect />}
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Ki Energy Orbs */}
@@ -105,31 +110,39 @@ const Hero: React.FC<HeroProps> = ({ soundEnabled }) => {
             }}
           >
            Gurmeher Singh
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8"
-          >
-            Computer Science Undergrad @ NJIT
-          </motion.p>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.5 }}
-            className="mb-12 cursor-pointer"
-            onClick={() => {
-              setShowInstantTransmission(true);
-              setTimeout(() => setShowInstantTransmission(false), 2000);
-            }}
-          >
-            <span className="text-lg md:text-xl text-blue-300 font-semibold">
-              "The power comes in response to a need, not a desire."
-            </span>
-          </motion.div>
+          <span className="block text-2xl md:text-3xl font-semibold text-yellow-300 mt-2 animate-bounce">(aka Guru!)</span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="text-xl md:text-2xl text-gray-300 mb-8"
+        >
+          Computer Science Undergrad @ New Jersey Institute of Technology
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.5 }}
+          className="mb-6 cursor-pointer"
+          onClick={() => {
+            setShowInstantTransmission(true);
+            setTimeout(() => setShowInstantTransmission(false), 2000);
+          }}
+        >
+          <span className="text-lg md:text-xl text-blue-300 font-semibold">
+            "The power comes in response to a need, not a desire."
+          </span>
+        </motion.div>
+        <button
+          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg font-bold shadow-lg hover:bg-blue-700 transition"
+          onClick={() => {
+            setShowKamehameha(true);
+            setTimeout(() => setShowKamehameha(false), 3000);
+          }}
+        >
+          Trigger Kamehameha!
+        </button>
         </motion.div>
 
         {/* Power Level Display */}
@@ -160,7 +173,7 @@ const Hero: React.FC<HeroProps> = ({ soundEnabled }) => {
               OVER 9000!
             </motion.div>
             <div className="text-xs text-green-300 mt-1">
-              (Click to scan)
+  
             </div>
           </div>
         </motion.div>

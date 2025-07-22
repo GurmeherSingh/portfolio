@@ -42,6 +42,18 @@ const CustomCursor = () => {
 };
 
 function App() {
+      {/* Floating Kamehameha Button (double click to trigger) */}
+      <button
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition"
+        title="Double click to Kamehameha!"
+        onDoubleClick={() => {
+          setShowKamehameha(true);
+          setTimeout(() => setShowKamehameha(false), 3000);
+        }}
+      >
+        {/* You can replace this emoji with a custom icon if desired */}
+        <span className="text-2xl">💥</span>
+      </button>
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [showKamehameha, setShowKamehameha] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
@@ -129,12 +141,15 @@ function App() {
       {/* Navigation */}
       <Navigation />
 
-      {/* Sound Toggle */}
+      {/* Sound Toggle hidden
       <SoundToggle
         soundEnabled={soundEnabled}
         setSoundEnabled={setSoundEnabled}
         onKamehameha={triggerKamehameha}
       />
+      */}
+      {/* Kamehameha Trigger Button */}
+   
 
       {/* Kamehameha Effect */}
       <AnimatePresence>

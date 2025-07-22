@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Github, Linkedin, Twitter, Send, MapPin } from 'lucide-react';
@@ -8,39 +8,34 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ soundEnabled }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [showDragonRadar, setShowDragonRadar] = useState(false);
+  // Formspree handles form submission, no local state needed
   const { ref, inView } = useInView({
     threshold: 0.3,
     triggerOnce: true,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setShowDragonRadar(true);
-    setTimeout(() => setShowDragonRadar(false), 3000);
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Message sent! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
+  // No handleSubmit or handleChange needed
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub', color: 'from-gray-600 to-gray-800' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn', color: 'from-blue-600 to-blue-800' },
-    { icon: Twitter, href: '#', label: 'Twitter', color: 'from-sky-500 to-sky-700' },
-    { icon: Mail, href: 'mailto:your.email@example.com', label: 'Email', color: 'from-red-500 to-red-700' }
+    {
+      icon: Github,
+      href: 'https://github.com/GurmeherSingh',
+      label: 'GitHub',
+      color: 'from-gray-600 to-gray-800'
+    },
+    {
+      icon: Linkedin,
+      href: 'https://www.linkedin.com/in/gurmehersingh/',
+      label: 'LinkedIn',
+      color: 'from-blue-600 to-blue-800'
+    },
+    // Twitter link removed
+    {
+      icon: Mail,
+      href: 'mailto:guru170606@gmail.com?subject=Contact%20from%20Portfolio%20Site',
+      label: 'Email',
+      color: 'from-red-500 to-red-700'
+    }
   ];
 
   return (
@@ -78,7 +73,7 @@ const Contact: React.FC<ContactProps> = ({ soundEnabled }) => {
                 Send a Message
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form action="https://formspree.io/f/mjkoyyok" method="POST" className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     Name
@@ -86,8 +81,6 @@ const Contact: React.FC<ContactProps> = ({ soundEnabled }) => {
                   <motion.input
                     type="text"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-slate-900/50 border border-gray-600 rounded-lg text-white focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200"
                     placeholder="Your name"
@@ -102,8 +95,6 @@ const Contact: React.FC<ContactProps> = ({ soundEnabled }) => {
                   <motion.input
                     type="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-slate-900/50 border border-gray-600 rounded-lg text-white focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200"
                     placeholder="your.email@example.com"
@@ -117,8 +108,6 @@ const Contact: React.FC<ContactProps> = ({ soundEnabled }) => {
                   </label>
                   <motion.textarea
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
                     required
                     rows={6}
                     className="w-full px-4 py-3 bg-slate-900/50 border border-gray-600 rounded-lg text-white focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
@@ -133,14 +122,7 @@ const Contact: React.FC<ContactProps> = ({ soundEnabled }) => {
                   whileTap={{ scale: 0.95 }}
                   className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-200 flex items-center justify-center space-x-2 relative overflow-hidden"
                 >
-                  {showDragonRadar && (
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500"
-                      initial={{ x: '-100%' }}
-                      animate={{ x: '100%' }}
-                      transition={{ duration: 1 }}
-                    />
-                  )}
+                  {/* Removed showDragonRadar animation overlay, as variable is undefined */}
                   <Send className="w-5 h-5" />
                   <span>Send Message</span>
                 </motion.button>

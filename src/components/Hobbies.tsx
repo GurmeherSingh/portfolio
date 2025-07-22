@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Music, Palette, TowerControl as GameController, Book, Camera, Headphones } from 'lucide-react';
+import { Music, Palette, TowerControl as GameController, Book, Camera, Headphones, Watch } from 'lucide-react';
 
 interface Hobby {
   id: string;
@@ -25,80 +25,41 @@ const Hobbies: React.FC<HobbiesProps> = ({ soundEnabled }) => {
 
   const hobbies: Hobby[] = [
     {
-      id: 'music',
-      title: 'Music Production',
-      icon: Music,
-      description: 'Creating beats and melodies that resonate with the soul',
-      details: [
-        'Electronic music production using Ableton Live',
-        'Mixing and mastering techniques',
-        'Sound design and synthesis',
-        'Collaboration with local artists'
-      ],
-      color: 'from-purple-400 to-pink-500'
-    },
-    {
       id: 'fragrances',
       title: 'Fragrance Collection',
       icon: Palette,
-      description: 'Exploring the art of scent and olfactory experiences',
+      description: 'my favorite scents',
       details: [
-        'Curating unique and rare fragrances',
-        'Understanding fragrance notes and composition',
-        'Seasonal scent rotation',
-        'Discovering niche perfume houses'
+        'YSL Y EDP',
+        'Tom Ford Fucking Fabulous',
+        'Jean Paul Gaultier Scandal',
+        'Jean Paul Gaultier Le Male'
       ],
       color: 'from-amber-400 to-orange-500'
     },
     {
-      id: 'animation',
-      title: 'Animation Studies',
-      icon: GameController,
-      description: 'Analyzing the craft behind animated masterpieces',
-      details: [
-        'Frame-by-frame animation techniques',
-        'Character development and storytelling',
-        'Studio analysis (Toei, Madhouse, Bones)',
-        'Animation history and evolution'
-      ],
-      color: 'from-blue-400 to-cyan-500'
-    },
-    {
       id: 'reading',
-      title: 'Technical Reading',
-      icon: Book,
-      description: 'Continuous learning through books and research',
+      title: 'Timepieces',
+      icon: Watch,
+      description: 'I love collecting watches; currently I own 3',
       details: [
-        'Computer science textbooks and papers',
-        'Technology blogs and articles',
-        'Philosophy and critical thinking',
-        'Biographies of tech leaders'
+        'Casio Vinatge D182: Love the grey retro look',
+        'HMT Himalaya: A super rare classic Indian watch with a timeless design',
+        'Seiko 5: Loved saving up for this one, it has a beautiful automatic movement',
+        'Currently saving up for a Citizen Zenshin :)',
       ],
       color: 'from-green-400 to-emerald-500'
-    },
-    {
-      id: 'photography',
-      title: 'Photography',
-      icon: Camera,
-      description: 'Capturing moments and exploring visual composition',
-      details: [
-        'Street photography and urban exploration',
-        'Digital editing and post-processing',
-        'Landscape and nature photography',
-        'Portrait and event photography'
-      ],
-      color: 'from-red-400 to-rose-500'
     },
     {
       id: 'podcasts',
       title: 'Podcast Listening',
       icon: Headphones,
-      description: 'Staying informed through audio content',
+      description: 'My favorite hobby; my favorites mentioned here',
       details: [
-        'Technology and startup podcasts',
-        'Comedy and entertainment shows',
-        'Educational content and interviews',
-        'News and current events analysis'
+        'Lenny’s Podcast',
+        'Prakhar ke Pravachan',
+        'WTF by Nikhil Kamath',
+        'FLAGRANT with Andrew Schulz/Akaash Singh',
       ],
       color: 'from-indigo-400 to-purple-500'
     }
